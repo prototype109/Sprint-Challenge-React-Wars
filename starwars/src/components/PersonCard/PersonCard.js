@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import HomeWorld from '../HomeWorldCard/HomeWorldCard';
+import {FaArrowsAltH} from 'react-icons/fa';
 
 function PersonCard(props){
     const [personData, setPersonData] = useState({});
@@ -50,6 +51,11 @@ function PersonCard(props){
         min-width: 500px;
     `;
 
+    const IconSize = styled.div`
+        margin-top: 40px;
+        font-size: 4.5rem;
+    `;
+
     return(
         <Container>
             <Shadow>
@@ -62,6 +68,9 @@ function PersonCard(props){
                     <li>Gender: {personData.gender}</li>
                 </ul>
             </Shadow>
+            <IconSize>
+                <FaArrowsAltH />
+            </IconSize>
             <Shadow>
                 <HomeWorld home={homeWorld} />
             </Shadow>
