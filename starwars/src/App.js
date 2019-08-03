@@ -1,5 +1,6 @@
 import React from 'react';
 import PersonCard from './components/PersonCard/PersonCard';
+import styled from 'styled-components';
 import './App.css';
 
 const App = () => {
@@ -10,16 +11,21 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
+  const Container = styled.div`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 0.5);
+        max-width: 90%;
+        margin: 0 auto;
+    `;
+
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <PersonCard person="1" />
-      <PersonCard person="2" />
-      <PersonCard person="3" />
-      <PersonCard person="4" />
-      <PersonCard person="5" />
-      <PersonCard person="6" />
-      <PersonCard person="7" />
+      <Container>
+        <PersonCard />
+      </Container>
     </div>
   );
 }

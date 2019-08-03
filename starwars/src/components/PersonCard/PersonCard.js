@@ -3,29 +3,30 @@ import axios from 'axios';
 import styled from 'styled-components';
 import HomeWorld from '../HomeWorldCard/HomeWorldCard';
 import {FaArrowsAltH} from 'react-icons/fa';
+import Person from './Person';
 
 function PersonCard(props){
-    const [personData, setPersonData] = useState({});
+    const [personData, setPersonData] = useState([]);
     const [personNum, setPersonNum] = useState(props.person);
     const [homeWorld, setHomeWorld] = useState('');
 
     useEffect(() => {
-        axios.get(`https://swapi.co/api/people/${personNum}/`)
+        axios.get(`https://swapi.co/api/people/`)
             .then(personInfo => {
-                //console.log('Person: ', personInfo.data);
+                //console.log('Person: ', personInfo);
                 //console.log('HomeWorld: ', personInfo.homeworld);
-                setPersonData(personInfo.data);
+                setPersonData(personInfo.data.results);
 
-                return axios.get(personInfo.data.homeworld);
+                // return axios.get(personInfo.data.homeworld);
             })
-            .then(homeWorldInfo => {
-                console.log(homeWorldInfo.data);
-                setHomeWorld(homeWorldInfo.data);
-            })
+            // .then(homeWorldInfo => {
+            //     console.log(homeWorldInfo.data);
+            //     setHomeWorld(homeWorldInfo.data);
+            // })
             .catch(err => {
                 console.log(`error: ${err}`);
             });
-    }, [personNum]);
+    }, []);
 
     // useEffect(() => {
     //     axios.get(personData.homeworld)
@@ -57,24 +58,18 @@ function PersonCard(props){
     `;
 
     return(
-        <Container>
-            <Shadow>
-                <h1>Name: {personData.name}</h1>
-                <hr/>
-                <ul>
-                    <li>Birth Year: {personData.birth_year}</li>
-                    <li>Height: {personData.height}</li>
-                    <li>Mass: {personData.mass}</li>
-                    <li>Gender: {personData.gender}</li>
-                </ul>
-            </Shadow>
-            <IconSize>
-                <FaArrowsAltH />
-            </IconSize>
-            <Shadow>
-                <HomeWorld home={homeWorld} />
-            </Shadow>
-        </Container>
+        // <Container>
+        //     <Shadow>
+        //         <Person personObj/>
+        //     </Shadow>
+        //     <IconSize>
+        //         <FaArrowsAltH />
+        //     </IconSize>
+        //     <Shadow>
+        //         {/* <HomeWorld home={homeWorld} /> */}
+        //     </Shadow>
+        // </Container>
+        personData.map(person => <Person person={person} />)
     );
 }
 
