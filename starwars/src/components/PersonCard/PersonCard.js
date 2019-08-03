@@ -37,7 +37,7 @@ function PersonCard(props){
     //         })
     // }, []);
 
-    const Person = styled.div`
+    const Container = styled.div`
         display: flex
         justify-content: space-around;
         background: rgba(255, 255, 255, 0.5);
@@ -45,9 +45,14 @@ function PersonCard(props){
         margin: 0 auto;
     `;
 
+    const Shadow = styled.div`
+        box-shadow: 10px 0 10px black;
+        min-width: 500px;
+    `;
+
     return(
-        <Person>
-            <div>
+        <Container>
+            <Shadow>
                 <h1>Name: {personData.name}</h1>
                 <hr/>
                 <ul>
@@ -56,11 +61,11 @@ function PersonCard(props){
                     <li>Mass: {personData.mass}</li>
                     <li>Gender: {personData.gender}</li>
                 </ul>
-            </div>
-            <div>
+            </Shadow>
+            <Shadow>
                 <HomeWorld home={homeWorld} />
-            </div>
-        </Person>
+            </Shadow>
+        </Container>
     );
 }
 

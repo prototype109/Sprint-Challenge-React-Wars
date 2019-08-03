@@ -17,6 +17,9 @@ const App = () => {
       <PersonCard person="2" />
       <PersonCard person="3" />
       <PersonCard person="4" />
+      <PersonCard person="5" />
+      <PersonCard person="6" />
+      <PersonCard person="7" />
     </div>
   );
 }
