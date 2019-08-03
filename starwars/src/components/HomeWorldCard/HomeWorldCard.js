@@ -3,28 +3,28 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 function HomeWorldCard(props){
-    // const [homeWorld, setHomeWorld] = useState('');
+    const [homeWorld, setHomeWorld] = useState('');
 
-    // useEffect(() => {
-    //     axios.get(props.home)
-    //         .then(homeInfo => {
-    //             console.log('HomeWorld: ', homeInfo);
-    //             //setHomeWorld(homeInfo.data)
-    //         })
-    //         .catch(err => {
-    //             console.log('homeWorld error: ', err);
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios.get(props.home)
+            .then(homeInfo => {
+                //console.log('HomeWorld: ', homeInfo);
+                setHomeWorld(homeInfo.data)
+            })
+            .catch(err => {
+                console.log('homeWorld error: ', err);
+            });
+    }, []);
 
     return(
         <div>
-            <h1>Home World: {props.home.name}</h1>
+            <h1>Home World: {homeWorld.name}</h1>
             <hr/>
             <ul>
-                <li>Climate: {props.home.climate}</li>
-                <li>Diameter: {props.home.diameter}</li>
-                <li>Gravity: {props.home.gravity}</li>
-                <li>Orbital Period: {props.home.orbital_period}</li>
+                <li>Climate: {homeWorld.climate}</li>
+                <li>Diameter: {homeWorld.diameter}</li>
+                <li>Gravity: {homeWorld.gravity}</li>
+                <li>Orbital Period: {homeWorld.orbital_period}</li>
             </ul>
         </div>
     );
