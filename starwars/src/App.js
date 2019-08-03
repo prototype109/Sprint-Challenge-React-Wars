@@ -1,4 +1,5 @@
 import React from 'react';
+import PersonCard from './components/PersonCard/PersonCard';
 import './App.css';
 
 const App = () => {
@@ -12,6 +13,10 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+      <PersonCard person="1" />
+      <PersonCard person="2" />
+      <PersonCard person="3" />
+      <PersonCard person="4" />
     </div>
   );
 }
